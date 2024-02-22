@@ -14,8 +14,6 @@
       padding: 0;
       background-color: #ffffff;
       background: url("images/bg.png");
-      margin: 0;
-      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,7 +21,6 @@
       background-size: cover;
       background-position: center;
       color: white;
-      /* Soft background color */
     }
 
     .footer {
@@ -42,8 +39,10 @@
     }
 
     .logo {
-      width: 300px;
+      width: 80%;
       /* Adjust width as needed */
+      max-width: 300px;
+      /* Set maximum width */
       height: auto;
     }
 
@@ -66,16 +65,17 @@
     }
 
     .container a:hover .logo {
-      /* Apply hover effect to the logo inside the link */
-      transform: scale(1.1);
-      /* Increase size on hover */
-      transition: transform 0.3s ease;
-      /* Smooth transition */
-      transform: rotateX(360deg);
-      /* Rotate 360 degrees along the x-axis on hover */
+      transform: scale(1.1) rotateX(360deg);
+      /* Combine both transformations */
       transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-      /* Smooth and slightly faster transition */
+    }
 
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+      .logo {
+        width: 90%;
+        /* Adjust width for smaller screens */
+      }
     }
   </style>
 </head>
