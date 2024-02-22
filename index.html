@@ -2,80 +2,145 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DPMS</title>
-  <style>
-    /* Add your CSS styles here */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      background: url("images/bg.png");
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      /* Soft background color */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            /* Black background */
+            color: #fdfcfc;
+            /* White text color */
+        }
 
-    .footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      padding: 10px 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
-    }
+        .contact-form {
+            width: 300px;
+            background: #222;
+            /* Dark background for the form */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
 
-    .container {
-      text-align: center;
-      position: relative;
-    }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-    .logo {
-      width: 200px;
-      /* Adjust width as needed */
-      height: auto;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .button {
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #2149cc;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      margin-top: 20px;
-      display: inline-block;
-    }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #555;
+            background: #333;
+            /* Darker input background */
+            color: #fff;
+            /* White input text */
+            border-radius: 4px;
+        }
 
-    .button:hover {
-      background-color: #555;
-    }
-  </style>
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #fa8703;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            color: #000000;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #4caf50;
+        }
+
+        .message.success {
+            color: #4caf50;
+            /* Green color for success message */
+        }
+
+        .message .icon {
+            margin-right: 5px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <img src="images/logo-home.png" alt="Logo" class="logo">
-    <br>
-    <a href="about.html" class="button">More Information</a>
-  </div>
+    <a href="about.html" class="back-link">&larr; Back to Home</a> <!-- Back to home link -->
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form id="contactForm" action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="button">Send Message</button>
+        </form>
+        <div class="message" id="successMessage">
+            <span class="icon">&#10003;</span> Message sent successfully!
+        </div>
+    </div>
 
-  <footer class="footer">
-    &copy; 2024 DPMS Universe. All rights reserved
-  </footer>
+    <div class="footer">
+        <p>&copy; 2024 DPMS Universe. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simulate form submission and show success message
+            var successMessage = document.getElementById("successMessage");
+            successMessage.style.display = "block";
+        });
+    </script>
 </body>
 
 </html>
