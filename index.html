@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page</title>
+  <title>DPMS</title>
   <style>
+    /* Add your CSS styles here */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      background: url("images/bg.png");
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url('images/bg.png');
       background-size: cover;
       background-position: center;
       color: white;
-    }
-
-    .container {
-      text-align: center;
-      position: relative;
+      /* Soft background color */
     }
 
     .footer {
@@ -32,55 +32,50 @@
       text-align: center;
       padding: 10px 0;
       background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
     }
 
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 20px;
-      background-color: #fa8703;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    .button:hover {
-      background-color: #4e4e4e;
-    }
-
-    .terminal-icon {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 50px;
-      /* Adjust width and height as needed */
-      height: auto;
-    }
-
-    .terminal-icon-link {
-      text-decoration: none;
-      color: inherit;
+    .container {
+      text-align: center;
+      position: relative;
     }
 
     .logo {
       width: 200px;
-      /* Adjust width and height as needed */
+      /* Adjust width as needed */
       height: auto;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #2149cc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background-color: #555;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <a href="terminal.html" class="terminal-icon-link">
-      <img src="images/logo.png" alt="Terminal Icon" class="logo">
-    </a>
-    <p>How time slips away with impetuous speed.</p>
-    <a href="contact.html" class="button">We Want You</a>
+    <img src="images/logo-home.png" alt="Logo" class="logo">
+    <br>
+    <a href="about.html" class="button">More Information</a>
   </div>
-  <div class="footer">
-    <p>&copy; 2024 DPMS Universe. All rights reserved.</p>
-  </div>
+
+  <footer class="footer">
+    &copy; 2024 DPMS Universe. All rights reserved
+  </footer>
 </body>
 
 </html>
