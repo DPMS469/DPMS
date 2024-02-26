@@ -8,19 +8,26 @@
     <link rel="icon" href="images/terminal-icon.png">
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
 </head>
+<a href="home.html" class="back-link">&larr; Back to Home</a> <!-- Back to home link -->
 
 <body>
-    <a href="index.html" class="back-link">&larr; Back to Home</a> <!-- Back to home link -->
-    <div class="terminal">
-        <div id="history"></div>
-        <div class="line">
-            <span id="prompt">root@user>&nbsp;</span> <!-- Change here -->
-            <input type="text" id="input">
+
+    <div class="rain-container">
+        <canvas>
+            <script src="script-matrix.js"></script>
+        </canvas>
+        <div class="terminal">
+            <div id="history"></div>
+            <div class="line">
+                <span id="prompt">root@user>&nbsp;</span> <!-- Change here -->
+                <input type="text" id="input">
+            </div>
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="script.js"></script> <!-- Link to external JavaScript file -->
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="script.js"></script> <!-- Link to external JavaScript file -->
 </body>
 <div class="footer">
     <p>&copy; 2024 DPMS Universe. All rights reserved.</p>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikachu Pokedex Entry</title>
+    <style>
+        body {
+            font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .pokedex-card {
+            width: 320px;
+            background-color: #d6d4d4;
+            border: 5px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 5px 5px 0 #000;
+            color: #fff;
+        }
+
+        .pokedex-header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .pokedex-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .pokemon-image {
+            width: 150px;
+            height: 150px;
+            filter: drop-shadow(15px 5px 5px black)
+        }
+
+        .pokemon-info {
+            text-align: left;
+            color: #000;
+        }
+
+        .pokemon-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pokedex-card">
+        <div class="pokedex-header">
+            <h1>#025 DPMS</h1>
+        </div>
+        <div class="pokedex-body">
+            <img src="images/logo-card.png" alt="Pikachu" class="pokemon-image">
+            <div class="pokemon-info">
+                <p><strong>Type:</strong> Fly</p>
+                <p><strong>Height:</strong> 0.4 m</p>
+                <p><strong>Weight:</strong> 6.0 kg</p>
+                <p><strong>Description:</strong> When several of these Pokémon gather, their electricity could build and
+                    cause lightning storms.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
