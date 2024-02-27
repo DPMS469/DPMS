@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="icon" href="images/pig.png">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            /* Soft background color */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fafafa;
+            padding: 20px;
+        }
+
+        header img {
+            width: 150px;
+            /* Adjust logo width */
+        }
+
+        .phrase {
+            margin-left: 50%;
+            color: #000000;
+            font-style: italic;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #080808;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        nav ul li a:hover {
+            color: #ffc107;
+            /* Change color on hover */
+        }
+
+        .footer {
+            /* Changed from 'static' to 'relative' to ensure it's always at the bottom */
+            margin-bottom: 0%;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #f5f5f5;
+        }
+
+
+        .terminal-icon {
+            width: 50px;
+            margin-right: 0px;
+            /* Adjust width and height as needed */
+            height: auto;
+        }
+
+        .terminal-icon-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: space-around;
+            height: auto;
+            align-items: center;
+            flex-direction: row;
+            padding: 50px 20px;
+            background-color: #fff;
+            /* White background */
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        .card {
+            position: relative;
+            width: 270px;
+            margin: 2em;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 180px 1fr auto;
+            ;
+        }
+
+        .card-body,
+        .card-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-image {
+            position: relative;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(./images/bk1.jpg);
+            background-size: cover;
+        }
+
+        .card-image img {
+            max-width: 95%;
+            max-height: 95%;
+            transition: max-width 0.4s, max-height 0.4s;
+        }
+
+        .card:hover .card-image img {
+            max-width: 120%;
+            max-height: 120%;
+        }
+
+
+        .card {
+            box-shadow: 0 15px 30px -10px #000;
+            cursor: pointer;
+            border-radius: 10%;
+        }
+
+        .card:hover {
+            box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:nth-child(2) .card-image {
+            background: url(./images/bk2.jpg);
+        }
+
+        .card:nth-child(3) .card-image {
+            background: url(./images/ceo-bk.png);
+        }
+
+        .card:nth-child(4) .card-image {
+            background: url(./images/bk4.jpg);
+        }
+
+        .card:nth-child(5) .card-image {
+            background: url(./images/bk4.jpg);
+        }
+
+
+        .card-body {
+            background: #fff;
+            padding: 20px 28px;
+        }
+
+        .card-body .power {
+            font-weight: bolder;
+        }
+
+        .card-body h2 {
+            font-size: 1.8em;
+            margin: 4px auto 12px;
+        }
+
+        .card-body p {
+            color: gray;
+            font-size: 1.1em;
+            line-height: 20px;
+            text-align: left;
+        }
+
+        .card-footer {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+        }
+
+        .card-footer .info {
+            font-size: 0.9em;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card-footer .info:last-child {
+            border: none;
+        }
+
+        .card-footer .info .type {
+            text-transform: uppercase;
+            margin-top: 2px;
+            font-size: 0.8em;
+        }
+
+        .card:nth-child(1) .card-footer {
+            background: #4891ba;
+        }
+
+        .card:nth-child(2) .card-footer {
+            background: #f6b10f;
+        }
+
+        .card:nth-child(3) .card-footer {
+            background: #26a715;
+        }
+
+        .card:nth-child(4) .card-footer {
+            background: #9e5161;
+        }
+
+        .card:nth-child(5) .card-footer {
+            background: #940494;
+        }
+
+        .card:nth-child(1) .power {
+            color: #4891ba;
+        }
+
+        .card:nth-child(2) .power {
+            color: #f6b10f;
+        }
+
+        .card:nth-child(3) .power {
+            color: #26a715;
+        }
+
+        .card:nth-child(4) .power {
+            color: #9e5161;
+        }
+
+        .card:nth-child(5) .power {
+            color: #940494;
+        }
+
+        .selector {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 18px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .card:hover .selector {
+            opacity: 1;
+        }
+
+        .selector button {
+            background-color: #4891ba;
+            color: #fff;
+            outline: none;
+            border: 2px solid currentColor;
+            cursor: pointer;
+            padding: 12px 20px;
+            transform: translateY(60px);
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.1em;
+            font-weight: bolder;
+            transition: opacity 0.3s;
+        }
+
+        .selector button:hover {
+            opacity: 0.8;
+        }
+
+        .card:nth-child(2) .selector button {
+            background-color: #f6b10f;
+        }
+
+        .card:nth-child(3) .selector button {
+            background-color: #26a715;
+        }
+
+        .card:nth-child(4) .selector button {
+            background-color: #9e5161;
+        }
+
+        .card:nth-child(5) .selector button {
+            background-color: #940494;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo-black.png" alt="Logo"></a>
+        <a href="terminal.html" class="terminal-icon-link"><img src="images/terminal-icon.png" alt="Terminal Icon"
+                class="terminal-icon"></a>
+        <p class="phrase">How time slips away with impetuous speed.</p>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-image">
+                <img src="./images/penguin.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Brilliant Power</span>
+                <h2>Penguin</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error laudantium sequi facere mollitia
+                    saepe.
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    <div class="value">7.0 m</div>
+                    <div class="type">height</div>
+                </div>
+                <div class="info">
+                    <div class="value">12.9 kg</div>
+                    <div class="type">weight</div>
+                </div>
+                <div class="info">
+                    <div class="value">4.8</div>
+                    <div class="type">rating</div>
+                </div>
+            </div>
+
+            <div class="selector">
+                <button>go with this!</button>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="./images/pellican.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Brilliant Power</span>
+                <h2>Pellican</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error laudantium sequi facere mollitia
+                    saepe.
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    <div class="value">3.6 m</div>
+                    <div class="type">height</div>
+                </div>
+                <div class="info">
+                    <div class="value">32.9 kg</div>
+                    <div class="type">weight</div>
+                </div>
+                <div class="info">
+                    <div class="value">4.9</div>
+                    <div class="type">rating</div>
+                </div>
+            </div>
+
+            <div class="selector">
+                <button>go with this!</button>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="./images/turtle.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Street Power</span>
+                <h2>CEO</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error laudantium sequi facere mollitia
+                    saepe.
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    <div class="value">1.90 m</div>
+                    <div class="type">height</div>
+                </div>
+                <div class="info">
+                    <div class="value">29.0 kg</div>
+                    <div class="type">weight</div>
+                </div>
+                <div class="info">
+                    <div class="value">5.0</div>
+                    <div class="type">rating</div>
+                </div>
+            </div>
+            <div class="selector">
+                <button>go with this!</button>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="./images/ferret.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Knight Power</span>
+                <h2>Ferret</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error laudantium sequi facere mollitia
+                    saepe.
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    <div class="value">0.9 m</div>
+                    <div class="type">height</div>
+                </div>
+                <div class="info">
+                    <div class="value">10 kg</div>
+                    <div class="type">weight</div>
+                </div>
+                <div class="info">
+                    <div class="value">4.7</div>
+                    <div class="type">rating</div>
+                </div>
+            </div>
+            <div class="selector">
+                <button>go with this!</button>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-image">
+                <img src="./images/meerkat.png" alt="Character">
+            </div>
+
+            <div class="card-body">
+                <span class="power">Brilliant Power</span>
+                <h2>Meerkat</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error laudantium sequi facere mollitia
+                    saepe.
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <div class="info">
+                    <div class="value">2.0 m</div>
+                    <div class="type">height</div>
+                </div>
+                <div class="info">
+                    <div class="value">22 kg</div>
+                    <div class="type">weight</div>
+                </div>
+                <div class="info">
+                    <div class="value">4.5</div>
+                    <div class="type">rating</div>
+                </div>
+            </div>
+            <div class="selector">
+                <button>go with this!</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+<footer class="footer">
+    &copy; 2024 DPMS Universe. All rights reserved
+</footer>
+
+</html>
