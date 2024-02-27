@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="../images/pig.png">
+    <link rel="stylesheet" href="../css/template.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/pop-up.css">
+    <link rel="stylesheet" href="../css/pokemon-card.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="../index.html"><img src="../images/logo-black.png" alt="Logo"></a>
+        <a href="terminal.html" class="terminal-icon-link"><img src="../images/terminal-icon.png" alt="Terminal Icon"
+                class="terminal-icon"></a>
+        <p class="phrase">How time slips away with impetuous speed.</p>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur congue consequat. Sed sit amet nibh
+            semper,
+            tincidunt massa sagittis, ultrices ipsum. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac
+            turpis egestas. Praesent volutpat orci tempor augue tempor lobortis. Phasellus suscipit fermentum nunc, quis
+            vehicula
+            tellus facilisis nec. Ut porta quis quam vitae lobortis. Mauris congue, orci rhoncus feugiat facilisis, nibh
+            enim
+            placerat dolor, condimentum fringilla diam nisi in leo. Aliquam euismod pharetra felis a efficitur. Cras
+            ligula eros,</p>
+        <img src="../images/being.png" alt="Image">
+        <!-- Trigger Button -->
+        <!-- Image Trigger Button -->
+        <img src="../images/logo-card.png" alt="Open Popup" class="popup-trigger" id="popupTrigger">
+
+        <!-- Pop-Up Card -->
+        <div class="popup-card" id="popupCard">
+            <div class="pokedex-card">
+                <div class="pokedex-header">
+                    <h1>#469 DPMS</h1>
+                </div>
+                <div class="pokedex-body">
+                    <img src="../images/logo-card.png" alt="Pikachu" class="pokemon-image">
+                    <div class="pokemon-info">
+                        <p><strong>Type:</strong> Fly</p>
+                        <p><strong>Height:</strong> 0.4 m</p>
+                        <p><strong>Weight:</strong> 6.0 kg</p>
+                        <p><strong>Description:</strong> When several of these gather, their electricity could build
+                            and
+                            cause lightning storms.</p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                // Toggle the popup using the image as a trigger
+                document.getElementById('popupTrigger').addEventListener('click', function () {
+                    var popupCard = document.getElementById('popupCard');
+                    popupCard.style.display = popupCard.style.display === 'block' ? 'none' : 'block';
+                });
+            </script>
+        </div>
+    </div>
+</body>
+<footer class="footer">
+    &copy; 2024 DPMS Universe. All rights reserved
+</footer>
+
+
+</html>

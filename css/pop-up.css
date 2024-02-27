@@ -1,0 +1,40 @@
+/* Popup Trigger Button */
+.popup-trigger {
+    cursor: pointer;
+    position: fixed;
+    bottom: 10%;
+    /* Adjust based on your footer's height */
+    right: 80px;
+    width: 50px;
+    /* Example size; adjust as needed */
+    height: 50px;
+    /* Example size; adjust as needed */
+    z-index: 20;
+    /* Ensure the button is above the footer */
+}
+
+.popup-trigger:hover {
+    transform: scale(1.2);
+    /* Enlarge the image by 20% */
+}
+
+
+/* Popup Card */
+.popup-card {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    bottom: 30%;
+    /* Adjust based on trigger button size and footer height */
+    right: 200px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1000;
+    /* Ensure it's above other content */
+}
+
+.card-content {
+    padding: 20px;
+}
