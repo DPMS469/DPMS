@@ -69,7 +69,7 @@ nav ul li a:hover {
 
 .footer {
     /* Changed from 'static' to 'relative' to ensure it's always at the bottom */
-    margin-bottom: 0%;
+    position: relative;
     width: 100%;
     text-align: center;
     padding: 10px 0;

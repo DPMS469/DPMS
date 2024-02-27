@@ -14,13 +14,3 @@
     border-radius: 5px;
     /* Rounded corners for images */
 }
-
-.footer {
-    /* Changed from 'static' to 'relative' to ensure it's always at the bottom */
-    margin-bottom: 0%;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #f5f5f5;
-}
