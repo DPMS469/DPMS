@@ -260,6 +260,10 @@
                         var popupCard = document.getElementById('popup-battle');
                         popupCard.querySelector('.ally img').src = characterImage;
                         popupCard.querySelector('#popupAllyName').textContent = characterName;
+                        if (characterName == 'CEO') {
+                            popupCard.querySelector('.ally img').src = "../images/turtle-small.png";
+                            popupCard.querySelector('#popupAllyName').textContent = "Turtle";
+                        }
 
                         // Show the popup card battle
                         popupCard.style.display = 'block';
