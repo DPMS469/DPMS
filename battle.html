@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Battle Scene</title>
+    <!-- Link to Press Start 2P font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="battle-container">
+        <div class="battle-scene">
+            <div class="enemy">
+                <div class="info">
+                    <p>CEO</p>
+                    <p>L.100</p>
+                    <div class="health-bar">
+                        <div class="health" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <img src="../images/turtle.png" id="transition" alt="Enemy Pokémon" width="150">
+            </div>
+            <div class="ally">
+                <img src="../images/ferret.png" alt="Your Pokémon" width="150">
+                <div class="info">
+                    <p>Ferret</p>
+                    <p>L.5</p>
+                    <div class="health-bar" id="allyHealthBar">
+                        <div class="health" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls-container">
+            <button id="fight">FIGHT</button>
+            <button>BAG</button>
+            <button>OTHER</button>
+            <button id="run">RUN</button>
+        </div>
+        <div class="border-corner"></div>
+        <script>
+
+            document.getElementById('run').addEventListener('click', function () {
+                var popupCard = document.getElementById('popup-battle');
+                popupCard.style.display = popupCard.style.display === 'block' ? 'none' : 'block';
+            });
+            document.getElementById('fight').addEventListener('click', function () {
+                // Update the width of the health bar dynamically
+                var healthPercentage = 25; // Set the health percentage here
+                var healthColor = 'red'; // Set the health color here
+                var allyHealthBar = document.getElementById('allyHealthBar');
+                var healthElement = allyHealthBar.querySelector('.health');
+                healthElement.style.width = healthPercentage + '%';
+                healthElement.style.backgroundColor = healthColor;
+
+            });
+            // JavaScript to trigger the appearance effect
+            document.addEventListener('DOMContentLoaded', function () {
+                const pokemon = document.getElementById('transition');
+                setTimeout(() => {
+                    pokemon.style.opacity = '1'; // Fade in effect
+                    pokemon.style.transform = 'scale(1.5) rotateY(180deg)';
+                    setTimeout(() => {
+                        pokemon.style.transform = 'scale(1)'; // Scale back to original size
+                    }, 1000); // Adjust timing as needed
+                }, 1000); // Adjust timing as needed
+            });
+
+        </script>
+    </div>
+</body>
+
+</html>

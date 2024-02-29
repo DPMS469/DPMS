@@ -1,0 +1,129 @@
+.battle-container {
+    position: flex;
+    margin: 20px auto;
+    padding: 20px;
+    width: 550px;
+    height: 550px;
+    border: 5px solid #000;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #fff;
+}
+
+.battle-scene {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.enemy .info {
+    text-align: left;
+    margin-right: 50px;
+}
+
+.ally .info {
+    text-align: right;
+    margin-left: 50px;
+    margin-top: 15%;
+}
+
+.info {
+    text-align: center;
+}
+
+.health-bar {
+    width: 280px;
+    height: 10px;
+    background-color: #ccc;
+    margin: 10px auto;
+    position: relative;
+}
+
+.health {
+    height: 100%;
+    background-color: #4caf50;
+}
+
+.enemy {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.ally {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.enemy img {
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.ally img {
+    display: flex;
+    justify-content: flex-start;
+    top: 0px;
+}
+
+.controls-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 5px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    gap: 10px;
+    width: 95%;
+}
+
+button {
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #F0F0F0;
+    border: 2px solid #000;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Popup Card */
+.popup-card {
+
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+@keyframes tremble {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    25% {
+        transform: translate(-5px, 5px);
+    }
+
+    50% {
+        transform: translate(5px, -5px);
+    }
+
+    75% {
+        transform: translate(-5px, 5px);
+    }
+
+    100% {
+        transform: translate(5px, -5px);
+    }
+}
+
+.tremble-effect {
+    animation: tremble 0.5s infinite;
+}

@@ -8,6 +8,9 @@
     <link rel="icon" href="../images/pig.png">
     <link rel="stylesheet" href="../css/cards-character.css">
     <link rel="stylesheet" href="../css/template.css">
+    <link rel="stylesheet" href="../css/battle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="../scripts/script-battle.js"></script>
 
 </head>
 
@@ -156,7 +159,7 @@
                     <div class="type">rating</div>
                 </div>
             </div>
-            <div class="selector">
+            <div class="selector" alt="Open Popup" id="popupTrigger">
                 <button>go with this!</button>
             </div>
 
@@ -189,13 +192,157 @@
                     <div class="type">rating</div>
                 </div>
             </div>
-            <div class="selector">
+            <div class="selector" alt="Open Popup" id="popupTrigger">
                 <button>go with this!</button>
             </div>
 
         </div>
+        <div class="popup-card" id="popup-battle">
+            <div class="battle-container">
+                <div class="battle-scene">
+                    <div class="enemy">
+                        <div class="info">
+                            <p>CEO</p>
+                            <p>L.100</p>
+                            <div class="health-bar">
+                                <div class="health" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <img src="../images/turtle.png" id="transition" alt="Enemy Pokémon" width="150">
+                    </div>
+                    <div class="ally">
+                        <img src="../images/ferret.png" alt="Your Pokémon" width="150" id="allyImage">
+                        <div class="info">
+                            <p id="popupAllyName">Ferret</p>
+                            <p>L.5</p>
+                            <div class="health-bar" id="allyHealthBar">
+                                <div class="health" style="width: 75%;"></div>
+                            </div>
+                            <div id="healthPercentageDisplay"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls-container">
+                    <button id="fight">FIGHT</button>
+                    <button id="bag">BAG</button>
+                    <button>OTHER</button>
+                    <button id="run">RUN</button>
+                </div>
+                <div class="border-corner"></div>
+                <script>
+                    function handleGoWithThis(button) {
+
+                        const pokemon = document.getElementById('transition');
+                        setTimeout(() => {
+                            pokemon.style.opacity = '1'; // Fade in effect
+                            pokemon.style.transform = 'scale(1.5)';
+                            setTimeout(() => {
+                                pokemon.style.transform = 'scale(1)'; // Scale back to original size
+                            }, 1000); // Adjust timing as needed
+                        }, 1000); // Adjust timing as needed
+
+                        // Update the width of the health bar dynamically
+                        var healthPercentage = 75; // Set the health percentage here
+                        var healthColor = '#4caf50'; // Set the health color here
+                        var allyHealthBar = document.getElementById('allyHealthBar');
+                        var healthElement = allyHealthBar.querySelector('.health');
+                        healthElement.style.width = healthPercentage + '%';
+                        healthElement.style.backgroundColor = healthColor;
+
+                        // Find the parent card of the clicked button
+                        var card = button.closest('.card');
+
+                        // Retrieve information from the card
+                        var characterName = card.querySelector('.card-body h2').textContent;
+                        var characterImage = card.querySelector('.card-image img').src;
+
+                        // Update the popup card battle with the retrieved information
+                        var popupCard = document.getElementById('popup-battle');
+                        popupCard.querySelector('.ally img').src = characterImage;
+                        popupCard.querySelector('#popupAllyName').textContent = characterName;
+
+                        // Show the popup card battle
+                        popupCard.style.display = 'block';
+                    }
+
+                    // Attach click event listeners to all "go with this!" buttons
+                    var goWithThisButtons = document.querySelectorAll('.selector button');
+                    goWithThisButtons.forEach(function (button) {
+                        button.addEventListener('click', function () {
+                            handleGoWithThis(button);
+                        });
+                    });
+
+                    document.getElementById('run').addEventListener('click', function () {
+
+                        var popupCard = document.getElementById('popup-battle');
+                        popupCard.style.display = 'none';
+                    });
+
+                    function getRandomNumber(min, max) {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+
+
+                    document.getElementById('fight').addEventListener('click', function () {
+                        // Update the width of the health bar dynamically
+                        var healthPercentage = getRandomNumber(5, 15); // Set the health percentage here
+                        // Set the health color here
+                        var healthPercentageDisplay = document.getElementById('healthPercentageDisplay');
+
+                        var allyHealthBar = document.getElementById('allyHealthBar');
+                        var healthElement = allyHealthBar.querySelector('.health');
+                        var currentWidth = parseFloat(healthElement.style.width) || 0; // Get current width, default to 0 if NaN
+                        var newWidth = currentWidth - healthPercentage; // Add healthPercentage to current width
+                        if (newWidth > 25 && newWidth < 45) {
+                            var healthColor = 'orange'
+                        }
+                        if (newWidth < 25) { var healthColor = 'red' }
+
+                        toggleTrembleEffect('allyImage');
+                        healthElement.style.width = newWidth + '%'; // Set the new width
+                        healthElement.style.backgroundColor = healthColor;
+                    });
+
+                    document.getElementById('bag').addEventListener('click', function () {
+                        // Update the width of the health bar dynamically
+                        var healthPercentage = 10; // Set the health percentage here
+
+                        var allyHealthBar = document.getElementById('allyHealthBar');
+                        var healthElement = allyHealthBar.querySelector('.health');
+                        var currentWidth = parseFloat(healthElement.style.width) || 0; // Get current width, default to 0 if NaN
+                        var newWidth = currentWidth + healthPercentage; // Add healthPercentage to current width
+                        var healthColor = '#4caf50'; // Set the health color here
+                        if (newWidth > 25 && newWidth < 45) {
+                            var healthColor = 'orange'
+                        }
+                        if (newWidth < 25) { var healthColor = 'red' }
+                        healthElement.style.backgroundColor = healthColor;
+                        if (newWidth < 100) { healthElement.style.width = newWidth + '%' } // Set the new width to 100
+                        else {
+                            healthElement.style.width = 100 + '%'
+                        }
+
+                    });
+
+                    function toggleTrembleEffect(imageId) {
+                        const imageElement = document.getElementById(imageId);
+                        imageElement.classList.add('tremble-effect');
+
+                        // Set the duration of the tremble effect here (in milliseconds)
+                        setTimeout(() => {
+                            imageElement.classList.remove('tremble-effect');
+                        }, 1000); // This will apply the effect for 1 second
+                    }
+
+
+
+                </script>
+            </div>
+        </div>
 
     </div>
+
 
 </body>
 <footer class="footer">
