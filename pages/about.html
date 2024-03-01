@@ -204,11 +204,11 @@
                         <div class="info-container">
                             <p><strong>CEO</strong></p>
                             <p>L.100</p>
-                            <div class="health-bar">
+                            <div class="health-bar" id="enemyHealthBar">
                                 <div class="health" style="width: 100%;"></div>
                             </div>
                         </div>
-                        <img src="../images/turtle.png" id="transition" alt="Enemy Pokémon" width="150">
+                        <img src="../images/turtle.png" id="transition" id="enemyImage" alt="Enemy Pokémon" width="150">
                     </div>
                     <div class="ally">
                         <img src="../images/ferret.png" alt="Your Pokémon" width="150" id="allyImage">
@@ -231,6 +231,7 @@
                 <div class="border-corner"></div>
                 <script src="../scripts/script-battle.js"></script>
                 <script>
+                    var namePreviousAlly;
                     function handleGoWithThis(button) {
 
                         const pokemon = document.getElementById('transition');
@@ -241,14 +242,6 @@
                                 pokemon.style.transform = 'scale(1)'; // Scale back to original size
                             }, 1000); // Adjust timing as needed
                         }, 1000); // Adjust timing as needed
-
-                        // Update the width of the health bar dynamically
-                        var healthPercentage = 75; // Set the health percentage here
-                        var healthColor = '#4caf50'; // Set the health color here
-                        var allyHealthBar = document.getElementById('allyHealthBar');
-                        var healthElement = allyHealthBar.querySelector('.health');
-                        healthElement.style.width = healthPercentage + '%';
-                        healthElement.style.backgroundColor = healthColor;
 
                         // Find the parent card of the clicked button
                         var card = button.closest('.card');
@@ -261,10 +254,21 @@
                         var popupCard = document.getElementById('popup-battle');
                         popupCard.querySelector('.ally img').src = characterImage;
                         popupCard.querySelector('#popupAllyName').textContent = characterName;
+
                         if (characterName == 'CEO') {
                             popupCard.querySelector('.ally img').src = "../images/turtle-small.png";
                             popupCard.querySelector('#popupAllyName').textContent = "Turtle";
+                            characterName = "Turtle"
                         }
+
+                        // Default health values
+                        var healthColor = '#4caf50';
+
+                        var allyHealthBar = document.getElementById('allyHealthBar');
+                        var healthElement = allyHealthBar.querySelector('.health');
+                        healthElement.style.width = '75%';
+                        healthElement.style.backgroundColor = healthColor;
+                        koEffect(healthElement.style.width, 'ally');
 
                         // Show the popup card battle
                         popupCard.style.display = 'block';
