@@ -204,6 +204,10 @@
     opacity: 0.8;
 }
 
+.card:nth-child(1) .selector button {
+    background-color: #4891ba;
+}
+
 .card:nth-child(2) .selector button {
     background-color: #f6b10f;
 }
