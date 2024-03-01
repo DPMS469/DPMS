@@ -7,14 +7,154 @@
     <title>Pokémon Battle Scene</title>
     <!-- Link to Press Start 2P font -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .battle-container {
+            position: flex;
+            margin: 20px auto;
+            padding: 20px;
+            width: 550px;
+            height: 550px;
+            border: 5px solid #000;
+            border-radius: 10px;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #fff;
+        }
+
+        .battle-scene {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .enemy .info-container {
+            text-align: left;
+            margin-right: 50px;
+            height: 100px;
+
+        }
+
+        .ally .info-container {
+            text-align: right;
+            margin-left: 50px;
+            margin-top: 15%;
+            height: 100px;
+        }
+
+        .info-container {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            border: 5px solid #000;
+            padding: 1%;
+        }
+
+        .health-bar {
+            width: 280px;
+            height: 10px;
+            background-color: #ccc;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        .health {
+            height: 100%;
+            background-color: #4caf50;
+        }
+
+        .enemy {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .ally {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .enemy img {
+            display: flex;
+            justify-content: flex-end;
+            opacity: 0;
+            /* Initially hidden */
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .ally img {
+            display: flex;
+            justify-content: flex-start;
+            top: 0px;
+        }
+
+        .controls-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border: 5px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #fff;
+            gap: 10px;
+            width: 100%;
+        }
+
+        button {
+            margin: 5px 0;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #F0F0F0;
+            border: 2px solid #000;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        button:hover {
+            background-color: #b4b4b4;
+        }
+
+        /* Popup Card */
+        .popup-card {
+
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        @keyframes tremble {
+            0% {
+                transform: translate(0px, 0px);
+            }
+
+            25% {
+                transform: translate(-5px, 5px);
+            }
+
+            50% {
+                transform: translate(5px, -5px);
+            }
+
+            75% {
+                transform: translate(-5px, 5px);
+            }
+
+            100% {
+                transform: translate(5px, -5px);
+            }
+        }
+
+        .tremble-effect {
+            animation: tremble 0.5s infinite;
+        }
+    </style>
 </head>
 
 <body>
     <div class="battle-container">
         <div class="battle-scene">
             <div class="enemy">
-                <div class="info">
+                <div class="info-container">
                     <p>CEO</p>
                     <p>L.100</p>
                     <div class="health-bar">
@@ -24,8 +164,9 @@
                 <img src="../images/turtle.png" id="transition" alt="Enemy Pokémon" width="150">
             </div>
             <div class="ally">
-                <img src="../images/ferret.png" alt="Your Pokémon" width="150">
-                <div class="info">
+                <img src="../images/ferret.png" alt="Your Pokémon" width="150" height="auto" id="allyImage">
+
+                <div class="info-container">
                     <p>Ferret</p>
                     <p>L.5</p>
                     <div class="health-bar" id="allyHealthBar">
@@ -36,27 +177,12 @@
         </div>
         <div class="controls-container">
             <button id="fight">FIGHT</button>
-            <button>BAG</button>
+            <button id="bag">BAG</button>
             <button>OTHER</button>
             <button id="run">RUN</button>
         </div>
         <div class="border-corner"></div>
         <script>
-
-            document.getElementById('run').addEventListener('click', function () {
-                var popupCard = document.getElementById('popup-battle');
-                popupCard.style.display = popupCard.style.display === 'block' ? 'none' : 'block';
-            });
-            document.getElementById('fight').addEventListener('click', function () {
-                // Update the width of the health bar dynamically
-                var healthPercentage = 25; // Set the health percentage here
-                var healthColor = 'red'; // Set the health color here
-                var allyHealthBar = document.getElementById('allyHealthBar');
-                var healthElement = allyHealthBar.querySelector('.health');
-                healthElement.style.width = healthPercentage + '%';
-                healthElement.style.backgroundColor = healthColor;
-
-            });
             // JavaScript to trigger the appearance effect
             document.addEventListener('DOMContentLoaded', function () {
                 const pokemon = document.getElementById('transition');
@@ -69,7 +195,64 @@
                 }, 1000); // Adjust timing as needed
             });
 
+            function getRandomNumber(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+
+            document.getElementById('fight').addEventListener('click', function () {
+                // Update the width of the health bar dynamically
+                var healthPercentage = getRandomNumber(5, 15); // Set the health percentage here
+                // Set the health color here
+
+                var allyHealthBar = document.getElementById('allyHealthBar');
+                var healthElement = allyHealthBar.querySelector('.health');
+                var currentWidth = parseFloat(healthElement.style.width) || 0; // Get current width, default to 0 if NaN
+                var newWidth = currentWidth - healthPercentage; // Add healthPercentage to current width
+                if (newWidth > 25 && newWidth < 45) {
+                    var healthColor = 'orange'
+                }
+                if (newWidth < 25) { var healthColor = 'red' }
+
+                toggleTrembleEffect('allyImage');
+                healthElement.style.width = newWidth + '%'; // Set the new width
+                healthElement.style.backgroundColor = healthColor;
+            });
+
+            document.getElementById('bag').addEventListener('click', function () {
+                // Update the width of the health bar dynamically
+                var healthPercentage = 10; // Set the health percentage here
+
+                var allyHealthBar = document.getElementById('allyHealthBar');
+                var healthElement = allyHealthBar.querySelector('.health');
+                var currentWidth = parseFloat(healthElement.style.width) || 0; // Get current width, default to 0 if NaN
+                var newWidth = currentWidth + healthPercentage; // Add healthPercentage to current width
+                var healthColor = '#4caf50'; // Set the health color here
+                if (newWidth > 25 && newWidth < 45) {
+                    var healthColor = 'orange'
+                }
+                if (newWidth < 25) { var healthColor = 'red' }
+                healthElement.style.backgroundColor = healthColor;
+                if (newWidth < 100) { healthElement.style.width = newWidth + '%' } // Set the new width to 100
+                else {
+                    healthElement.style.width = 100 + '%'
+                }
+
+            });
+
+            function toggleTrembleEffect(imageId) {
+                const imageElement = document.getElementById(imageId);
+                imageElement.classList.add('tremble-effect');
+
+                // Set the duration of the tremble effect here (in milliseconds)
+                setTimeout(() => {
+                    imageElement.classList.remove('tremble-effect');
+                }, 1000); // This will apply the effect for 1 second
+            }
+
+
         </script>
+
     </div>
 </body>
 

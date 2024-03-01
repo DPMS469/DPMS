@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="../css/template.css">
     <link rel="stylesheet" href="../css/battle.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="../scripts/script-battle.js"></script>
 
 </head>
 
 <body>
+
     <header>
         <a href="../index.html"><img src="../images/logo-black.png" alt="Logo"></a>
         <a href="../pages/terminal.html" class="terminal-icon-link"><img src="../images/terminal-icon.png"
@@ -201,9 +201,9 @@
             <div class="battle-container">
                 <div class="battle-scene">
                     <div class="enemy">
-                        <div class="info">
+                        <div class="info-container">
                             <p><strong>CEO</strong></p>
-                            <p>L.<strong>100</strong></p>
+                            <p>L.100</p>
                             <div class="health-bar">
                                 <div class="health" style="width: 100%;"></div>
                             </div>
@@ -212,9 +212,9 @@
                     </div>
                     <div class="ally">
                         <img src="../images/ferret.png" alt="Your Pokémon" width="150" id="allyImage">
-                        <div class="info">
+                        <div class="info-container">
                             <p id="popupAllyName"><strong>Ferret</strong></p>
-                            <p>L.<strong>5</strong></p>
+                            <p>L.5</p>
                             <div class="health-bar" id="allyHealthBar">
                                 <div class="health" style="width: 75%;"></div>
                             </div>
@@ -229,6 +229,7 @@
                     <button id="run">RUN</button>
                 </div>
                 <div class="border-corner"></div>
+                <script src="../scripts/script-battle.js"></script>
                 <script>
                     function handleGoWithThis(button) {
 
@@ -269,6 +270,7 @@
                         popupCard.style.display = 'block';
                     }
 
+
                     // Attach click event listeners to all "go with this!" buttons
                     var goWithThisButtons = document.querySelectorAll('.selector button');
                     goWithThisButtons.forEach(function (button) {
@@ -276,70 +278,6 @@
                             handleGoWithThis(button);
                         });
                     });
-
-                    document.getElementById('run').addEventListener('click', function () {
-
-                        var popupCard = document.getElementById('popup-battle');
-                        popupCard.style.display = 'none';
-                    });
-
-                    function getRandomNumber(min, max) {
-                        return Math.floor(Math.random() * (max - min + 1)) + min;
-                    }
-
-
-                    document.getElementById('fight').addEventListener('click', function () {
-                        // Update the width of the health bar dynamically
-                        var healthPercentage = getRandomNumber(5, 15); // Set the health percentage here
-                        // Set the health color here
-                        var healthPercentageDisplay = document.getElementById('healthPercentageDisplay');
-
-                        var allyHealthBar = document.getElementById('allyHealthBar');
-                        var healthElement = allyHealthBar.querySelector('.health');
-                        var currentWidth = parseFloat(healthElement.style.width) || 0; // Get current width, default to 0 if NaN
-                        var newWidth = currentWidth - healthPercentage; // Add healthPercentage to current width
-                        if (newWidth > 25 && newWidth < 45) {
-                            var healthColor = 'orange'
-                        }
-                        if (newWidth < 25) { var healthColor = 'red' }
-
-                        toggleTrembleEffect('allyImage');
-                        healthElement.style.width = newWidth + '%'; // Set the new width
-                        healthElement.style.backgroundColor = healthColor;
-                    });
-
-                    document.getElementById('bag').addEventListener('click', function () {
-                        // Update the width of the health bar dynamically
-                        var healthPercentage = 10; // Set the health percentage here
-
-                        var allyHealthBar = document.getElementById('allyHealthBar');
-                        var healthElement = allyHealthBar.querySelector('.health');
-                        var currentWidth = parseFloat(healthElement.style.width) || 0; // Get current width, default to 0 if NaN
-                        var newWidth = currentWidth + healthPercentage; // Add healthPercentage to current width
-                        var healthColor = '#4caf50'; // Set the health color here
-                        if (newWidth > 25 && newWidth < 45) {
-                            var healthColor = 'orange'
-                        }
-                        if (newWidth < 25) { var healthColor = 'red' }
-                        healthElement.style.backgroundColor = healthColor;
-                        if (newWidth < 100) { healthElement.style.width = newWidth + '%' } // Set the new width to 100
-                        else {
-                            healthElement.style.width = 100 + '%'
-                        }
-
-                    });
-
-                    function toggleTrembleEffect(imageId) {
-                        const imageElement = document.getElementById(imageId);
-                        imageElement.classList.add('tremble-effect');
-
-                        // Set the duration of the tremble effect here (in milliseconds)
-                        setTimeout(() => {
-                            imageElement.classList.remove('tremble-effect');
-                        }, 1000); // This will apply the effect for 1 second
-                    }
-
-
 
                 </script>
             </div>

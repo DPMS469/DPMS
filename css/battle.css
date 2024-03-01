@@ -17,20 +17,25 @@
     padding: 20px;
 }
 
-.enemy .info {
+.enemy .info-container {
     text-align: left;
-    margin-right: 50px;
+    margin-right: 30px;
+    height: 100px;
+
 }
 
-.ally .info {
+.ally .info-container {
     text-align: right;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 15%;
+    height: 100px;
 }
 
-.info {
+.info-container {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
+    border: 5px solid #000;
+    padding: 1%;
 }
 
 .health-bar {
@@ -81,7 +86,7 @@
     padding: 10px;
     background-color: #fff;
     gap: 10px;
-    width: 95%;
+    width: 100%;
 }
 
 button {
@@ -91,6 +96,10 @@ button {
     background-color: #F0F0F0;
     border: 2px solid #000;
     font-family: 'Press Start 2P', cursive;
+}
+
+button:hover {
+    background-color: #b4b4b4;
 }
 
 /* Popup Card */
